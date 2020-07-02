@@ -1,7 +1,10 @@
 :root {
-  --scissors-gradient: hsl(39, 89%, 49%) to hsl(40, 84%, 53%);
-  --paper-gradient: hsl(230, 89%, 62%) to hsl(230, 89%, 65%);
-  --rock-gradient: hsl(349, 71%, 52%) to hsl(349, 70%, 56%);
+  --scissors-border: hsl(40, 84%, 53%);
+  --scissors-shadow: hsl(39, 89%, 49%, 0.5);
+  --paper-border: hsl(230, 89%, 65%);
+  --paper-shadow: hsla(230, 89%, 62%, 0.5);
+  --rock-border: hsl(349, 70%, 56%);
+  --rock-shadow: hsl(349, 71%, 52%, 0.5);
   --dark-text: hsl(229, 25%, 31%);
   --score-text: hsl(229, 64%, 46%);
   --header-outline: hsl(217, 16%, 45%);
@@ -23,29 +26,29 @@ html {
 body {
   font-size: 1.8rem;
   font-family: 'Barlow Semi Condensed', sans-serif;
-  min-height: 100vh;
+  height: 100vh;
   background-image: radial-gradient(hsl(214, 47%, 23%), hsl(237, 49%, 15%));
   color: #fff;
 }
 
 .rules-btn {
   background-color: transparent;
-  padding: 1rem 4rem;
+  padding: 1.2rem 3rem;
   color: #fff;
   border: 1px solid var(--color-white);
   border-radius: 5px;
   cursor: pointer;
   position: absolute;
-  bottom: 5rem;
-  right: 5rem;
-  letter-spacing: 3px;
+  bottom: 3rem;
+  right: 3rem;
+  letter-spacing: 2px;
   outline: none;
 }
 
 .rules-btn:hover {
   border-color: var(--color-cyan);
   color: var(--color-cyan);
-  transition: all .2s ease;
+  transition: all 0.2s ease;
 }
 
 .rules-btn:active {
@@ -53,12 +56,13 @@ body {
 }
 
 .container {
-  max-width: 1200px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 100%;
+  max-width: 100%;
+  width: 1200px;
   margin: 0 auto;
+  height: 100%;
 }
 
 .board {
@@ -70,12 +74,12 @@ body {
   width: 70rem;
   border: 3px solid var(--header-outline);
   border-radius: 15px;
-  margin-top: 5rem;
+  margin: 5rem 0;
 }
 
 .game-title {
-  line-height: .8;
-  color: var(--color-white);
+  line-height: 0.8;
+  color: rgb(236, 223, 185);
 }
 
 .game-score {
@@ -95,4 +99,75 @@ body {
 .game-score .score {
   color: var(--dark-text);
   font-size: 6rem;
+}
+
+/* Weapons */
+
+.weapons {
+  padding: 3rem 0;
+  display: grid;
+  grid-template-rows: repeat(2, min-content);
+  grid-template-columns: repeat(8, 1fr);
+  width: 70rem;
+  max-width: 100%;
+
+  /* margin: 0 auto; */
+}
+
+.weapon-btn {
+  display: block;
+  /* max-width: 100%;
+  max-height: 100%; */
+  width: 12vw;
+  height: 12vw;
+  border-radius: 50%;
+  outline: none;
+  border: 2rem solid transparent;
+  cursor: pointer;
+}
+
+.weapon-btn img {
+  max-width: 50%;
+  width: 7rem;
+}
+
+/*
+--scissors-gradient: hsl(39, 89%, 49%) to hsl(40, 84%, 53%);
+--paper-gradient: hsl(230, 89%, 62%) to hsl(230, 89%, 65%);
+--rock-gradient: hsl(349, 71%, 52%) to hsl(349, 70%, 56%);
+*/
+
+.rock {
+  grid-column: 4 / 6;
+  grid-row: 2 / 3;
+  border-color: var(--rock-border);
+  box-shadow: 0px 10px 5px var(--rock-shadow);
+}
+
+.paper {
+  grid-column: 2 / 4;
+  grid-row: 1 / 2;
+  border-color: var(--paper-border);
+  box-shadow: 0px 10px 5px var(--paper-shadow);
+}
+
+.scissors {
+  grid-column: 6 / 8;
+  grid-row: 1 / 2;
+  border-color: var(--scissors-border);
+  box-shadow: 0px 10px 2px var(--scissors-shadow);
+}
+
+@media screen and (max-width: 1064px) {
+  .weapon-btn {
+    width: 20vw;
+    height: 20vw;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .weapon-btn {
+    width: 25vw;
+    height: 25vw;
+  }
 }
