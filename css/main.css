@@ -29,6 +29,15 @@ body {
   height: 100vh;
   background-image: radial-gradient(hsl(214, 47%, 23%), hsl(237, 49%, 15%));
   color: #fff;
+  padding: 3rem;
+}
+
+header {
+  background: red;
+}
+
+main {
+  /* background: red; */
 }
 
 .rules-btn {
@@ -74,7 +83,7 @@ body {
   width: 70rem;
   border: 3px solid var(--header-outline);
   border-radius: 15px;
-  margin: 5rem 0;
+  margin: 0 auto;
 }
 
 .game-title {
@@ -99,6 +108,81 @@ body {
 .game-score .score {
   color: var(--dark-text);
   font-size: 6rem;
+}
+
+.options {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 50rem;
+  /* background: red; */
+  margin: 0 auto;
+  max-width: 100%;
+
+}
+
+main {
+  position: relative;
+  margin-top: 3rem;
+}
+
+main::before {
+  content: "";
+  position: absolute;
+  background: url(../images/bg-triangle.svg) no-repeat;
+  background-position: center;
+  top: 20%;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  /* width: 100%; */
+}
+
+.btn-circle {
+  display: inline-block;
+  width: 180px;
+  height: 180px;
+  border: none;
+  border-radius: 50%;
+  outline: none;
+  cursor: pointer;
+  margin: 0 3rem;
+  padding: 2rem;
+}
+
+.btn-circle:hover {
+  filter: brightness(110%);
+}
+
+.btn-circle:active {
+  transform: translateY(2px);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, .6);
+}
+
+.rock {
+  background-image: linear-gradient(to bottom, hsl(349, 71%, 52%), hsl(349, 70%, 56%));
+  box-shadow: 0 8px 0 var(--rock-shadow);
+}
+
+.paper {
+  background-image: linear-gradient(to bottom, hsl(230, 89%, 62%), hsl(230, 89%, 65%));
+  box-shadow: 0 8px 0 var(--paper-shadow);
+}
+
+.scissors {
+  background-image: linear-gradient(to bottom, hsl(39, 89%, 49%), hsl(40, 84%, 53%));
+  box-shadow: 0 8px 0 var(--scissors-shadow);
+}
+
+.btn-wrapper {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  background: #f5f5f5;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
 }
 
 /* Weapons */
@@ -150,9 +234,9 @@ body {
 }
 
 .pick {
-  width: 100%;
+  max-width: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   padding: 3rem;
 }
 
@@ -161,11 +245,14 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 0 7rem;
+  padding: 1rem 3rem;
+  margin: 0 1rem;
+  max-width: 33%;
+  width: 50rem;
 }
 
 .pick h2 {
-  font-size: 2.5rem;
+  font-size: 2rem;
   font-weight: 400;
   margin-bottom: 5rem;
 }
@@ -176,30 +263,38 @@ body {
 --rock-gradient: hsl(349, 71%, 52%) to hsl(349, 70%, 56%);
 */
 
-.rock {
-  grid-column: 4 / 6;
-  grid-row: 2 / 3;
-  border-color: var(--rock-border);
-  box-shadow: 0px 10px 5px var(--rock-shadow);
-}
-
-.paper {
-  grid-column: 2 / 4;
-  grid-row: 1 / 2;
-  border-color: var(--paper-border);
-  box-shadow: 0px 10px 5px var(--paper-shadow);
-}
-
-.scissors {
-  grid-column: 6 / 8;
-  grid-row: 1 / 2;
-  border-color: var(--scissors-border);
-  box-shadow: 0px 10px 2px var(--scissors-shadow);
-}
-
-
 .computer-pick button {
   /* opacity: 0; */
+}
+
+.result-container {
+  /* width: 300rem; */
+}
+
+.result {
+  font-size: 4.5rem;
+}
+
+.play-again-btn {
+  background: whitesmoke;
+  color: hsl(214, 98%, 23%);
+  outline: none;
+  border: 3px solid transparent;
+  padding: 1rem 4rem;
+  margin: 2rem 0;
+  text-transform: uppercase;
+  border-radius: 5px;
+  cursor: pointer;
+  letter-spacing: 2px;
+}
+
+.play-again-btn:hover {
+  /* background-color: #fff; */
+  filter: brightness(120%);
+}
+
+.play-again-txt {
+  font-weight: 700;
 }
 
 .hide {
@@ -218,6 +313,10 @@ body {
 }
 
 @media screen and (max-width: 768px) {
+  .result {
+    font-size: 3.2rem;
+  }
+
   .weapon-btn {
     width: 25vw;
     height: 25vw;
