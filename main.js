@@ -1,3 +1,6 @@
+const rulesContainer = document.querySelector('.rules');
+const rulesBtn = document.querySelector('.rules-btn');
+const exitRulesBtn = document.querySelector('.exit-rules');
 const optionsContainer = document.querySelector('.options');
 const optionButtons = document.querySelectorAll('.btn-circle');
 const pickContainer = document.querySelector('.pick');
@@ -21,6 +24,14 @@ function startGame() {
 }
 
 function loadEventListeners() {
+  rulesBtn.addEventListener('click', () => {
+    rulesContainer.classList.remove('hide');
+  });
+
+  exitRulesBtn.addEventListener('click', () => {
+    rulesContainer.classList.add('hide');
+  });
+
   optionButtons.forEach(btn => {
     btn.addEventListener('click', getPlayerChoice);
   });

@@ -30,6 +30,7 @@ body {
   background-image: radial-gradient(hsl(214, 47%, 23%), hsl(237, 49%, 15%));
   color: #fff;
   padding: 3rem;
+  position: relative;
 }
 
 header {}
@@ -261,6 +262,52 @@ main::before {
 
 #play-again:hover {
   filter: brightness(90%);
+}
+
+.rules {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: rgba(0, 0, 0, .6);
+
+}
+
+
+.rules-card {
+  background: #fff;
+  width: 35rem;
+  max-width: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 7px;
+  padding: 2rem 3rem;
+}
+
+.rules-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--dark-text);
+  margin-bottom: 3rem;
+}
+
+.rules-img {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.rules-img img {
+  max-width: 100%;
+}
+
+.exit-rules {
+  font-size: 2.5rem;
+  color: rgb(201, 201, 201);
+  cursor: pointer;
 }
 
 .hide {
