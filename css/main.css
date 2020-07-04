@@ -110,7 +110,6 @@ body {
   justify-content: center;
   flex-wrap: wrap;
   width: 50rem;
-
   margin: 0 auto;
   max-width: 100%;
   padding: 1rem;
@@ -363,7 +362,64 @@ main::before {
   }
 }
 
+@media screen and (max-width: 799px) {
+  .pick {
+    align-items: center;
+    justify-content: space-between;
+    height: auto;
+    margin-top: 10rem;
+  }
+
+  .pick h2 {
+    font-size: 2rem;
+    order: 2;
+  }
+
+
+
+  .result {
+    display: block;
+    position: absolute;
+    bottom: 15%;
+    left: 0;
+    right: 0;
+    max-width: 100%;
+    font-size: 3rem;
+  }
+
+  .pick .player-pick h2,
+  .pick .computer-pick h2 {
+    margin-bottom: 0rem;
+    margin-top: 5rem;
+  }
+
+}
+
 @media screen and (max-width: 600px) {
+  html {
+    font-size: 50%;
+  }
+
+  body {
+    padding: 1.5rem;
+  }
+
+  main::before {
+    content: "";
+    position: absolute;
+    background: url(../images/bg-triangle.svg) no-repeat;
+    background-position: center;
+    background-size: 150px;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    /* width: 100%; */
+  }
+
+  .board {
+    padding: 1rem;
+  }
+
   .btn-circle {
     width: 130px;
     height: 130px;
@@ -372,16 +428,67 @@ main::before {
   .btn-circle-big {
     width: 130px;
     height: 130px;
+    transform: scale(1.1);
+  }
+
+  .btn-circle-big img {
+    max-width: 50%;
+  }
+
+  .game-score {
+    border-radius: 5px;
+    padding: 1rem 2.5rem;
+  }
+
+  .game-score span {
+    letter-spacing: 2px;
+  }
+
+  .options {
+    padding: 1rem .2rem;
+  }
+
+  .rules-btn {
+    position: absolute;
+    bottom: 10%;
+    left: 50%;
+    transform: translate(-50%, 0);
+  }
+
+}
+
+@media screen and (max-width: 385px) {
+
+  .options {
+    display: grid;
+    grid-template-columns: 2;
+  }
+
+  .paper {
+    grid-column: 1 /2;
+  }
+
+  .scissors {
+    grid-column: 2 /3;
+  }
+
+  .btn-circle {
+    width: 30vw;
+    height: 30vw;
+  }
+
+  .btn-circle img {
+    max-width: 50%;
+  }
+
+  .btn-circle-big {
+    width: 30vw;
+    height: 30vw;
   }
 }
 
-@media screen and (max-width: 500px) {
-  .btn-circle {
-    width: 100px;
-    height: 100px;
-  }
-
-  .btn-circle .btn-wrapper img {
-    max-width: 50%;
+@media screen and (max-height: 600px) {
+  .pick {
+    margin-top: 5rem;
   }
 }
