@@ -11,6 +11,8 @@
   --color-white: rgb(249, 249, 249);
   --color-cyan: hsl(189, 59%, 53%);
   --radial-gradient: hsl(214, 47%, 23%) to hsl(237, 49%, 15%);
+
+  --color-gren: rgb(0, 194, 58);
 }
 
 * {
@@ -30,12 +32,7 @@ body {
   background-image: radial-gradient(hsl(214, 47%, 23%), hsl(237, 49%, 15%));
   color: #fff;
   padding: 3rem;
-  position: relative;
 }
-
-header {}
-
-main {}
 
 .rules-btn {
   background-color: transparent;
@@ -61,7 +58,7 @@ main {}
   transform: translateY(1px);
 }
 
-.container {
+/* .container {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -69,7 +66,7 @@ main {}
   width: 1200px;
   margin: 0 auto;
   height: 100%;
-}
+} */
 
 .board {
   display: flex;
@@ -77,7 +74,7 @@ main {}
   align-items: center;
   padding: 2rem 3rem;
   max-width: 100%;
-  width: 60rem;
+  width: 65rem;
   border: 3px solid var(--header-outline);
   border-radius: 15px;
   margin: 0 auto;
@@ -147,7 +144,9 @@ main::before {
   cursor: pointer;
   margin: 0 3rem;
   padding: 2rem;
+  position: relative;
 }
+
 
 .btn-circle:hover {
   filter: brightness(110%);
@@ -202,6 +201,10 @@ main::before {
   color: rgb(236, 223, 185);
 }
 
+.computer-pick .btn-circle-big {
+  visibility: hidden;
+}
+
 .btn-circle-big {
   transform: scale(1.3);
   display: inline-block;
@@ -214,7 +217,29 @@ main::before {
   padding: 2rem;
   margin: 0;
   cursor: initial;
+  z-index: 1000;
+  position: relative;
 }
+
+.winner {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: white;
+  border-radius: 50%;
+  animation: growUp 1s linear infinite;
+  z-index: -1000;
+  visibility: hidden;
+}
+
+.text-red {
+  color: rgb(187, 6, 6);
+}
+
 
 .pick .btn-circle:hover {
   filter: brightness(100%);
@@ -232,6 +257,7 @@ main::before {
 .pick .result {
   padding: 1rem 3rem;
   margin: 0 3rem;
+  visibility: hidden;
 }
 
 .pick .rock:active {
@@ -258,11 +284,13 @@ main::before {
   cursor: pointer;
   letter-spacing: 2px;
   font-weight: 400;
+  display: inline-block;
 }
 
 #play-again:hover {
   filter: brightness(90%);
 }
+
 
 .rules {
   position: absolute;
@@ -271,7 +299,7 @@ main::before {
   bottom: 0;
   right: 0;
   background: rgba(0, 0, 0, .6);
-
+  z-index: 10000;
 }
 
 
@@ -311,27 +339,49 @@ main::before {
 }
 
 .hide {
-  display: none;
+  display: none !important;
 }
 
 .show {
   display: block;
 }
 
-@media screen and (max-width: 1064px) {
-  .weapon-btn {
-    width: 20vw;
-    height: 20vw;
+
+@keyframes growUp {
+  0% {
+    opacity: 0;
+    transform: scale(1.3);
+  }
+
+  50% {
+    opacity: .3;
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(2);
   }
 }
 
-@media screen and (max-width: 768px) {
-  .result {
-    font-size: 3.2rem;
+@media screen and (max-width: 600px) {
+  .btn-circle {
+    width: 130px;
+    height: 130px;
   }
 
-  .weapon-btn {
-    width: 25vw;
-    height: 25vw;
+  .btn-circle-big {
+    width: 130px;
+    height: 130px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .btn-circle {
+    width: 100px;
+    height: 100px;
+  }
+
+  .btn-circle .btn-wrapper img {
+    max-width: 50%;
   }
 }

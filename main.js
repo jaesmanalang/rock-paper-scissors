@@ -1,6 +1,9 @@
 const rulesContainer = document.querySelector('.rules');
+const playerWinner = document.getElementById('player-winner');
+const computerWinner = document.getElementById('computer-winner');
 const rulesBtn = document.querySelector('.rules-btn');
 const exitRulesBtn = document.querySelector('.exit-rules');
+const resultContainer = document.querySelector('.result');
 const optionsContainer = document.querySelector('.options');
 const optionButtons = document.querySelectorAll('.btn-circle');
 const pickContainer = document.querySelector('.pick');
@@ -54,7 +57,6 @@ function getPlayerChoice(e) {
   playerChoice = e.currentTarget.value;
   computerChoice = getComputerChoice();
   displayPicks(playerChoice, computerChoice);
-  checkWinner(playerChoice, computerChoice);
 }
 
 /**
@@ -69,6 +71,13 @@ function displayPicks(playerChoice, computerChoice) {
   playerPickImg.src = `images/icon-${playerChoice}.svg`;
   btnCircleBig[1].classList.add(`${computerChoice}`);
   computerPickImg.src = `images/icon-${computerChoice}.svg`;
+  setTimeout(() => {
+    btnCircleBig[1].style.visibility = 'visible';
+    setTimeout(() => {
+      resultContainer.style.visibility = 'visible';
+      checkWinner(playerChoice, computerChoice);
+    }, 1000);
+  }, 2000);
 }
 
 /**
@@ -79,6 +88,7 @@ function displayPicks(playerChoice, computerChoice) {
 function checkWinner(playerChoice, computerChoice) {
   if (playerChoice === computerChoice) {
     declare.innerText = 'DRAW';
+    playAgainBtn.style.color = 'hsl(214, 98%, 23%)';
   } else if (
     (playerChoice === 'rock' && computerChoice === 'scissors') ||
     (playerChoice === 'paper' && computerChoice === 'rock') ||
@@ -86,9 +96,13 @@ function checkWinner(playerChoice, computerChoice) {
   ) {
     updateScore(1);
     declare.innerText = 'YOU WIN';
+    playAgainBtn.style.color = 'rgb(0, 194, 58)';
+    playerWinner.style.visibility = 'visible';
   } else {
     updateScore(-1);
     declare.innerText = 'YOU LOSE';
+    playAgainBtn.style.color = 'red';
+    computerWinner.style.visibility = 'visible';
   }
   score.innerText = currentScore;
 }
@@ -102,6 +116,10 @@ function reset() {
   pickContainer.style.display = 'none';
   btnCircleBig[0].classList.remove('rock', 'paper', 'scissors');
   btnCircleBig[1].classList.remove('rock', 'paper', 'scissors');
+  resultContainer.style.visibility = 'hidden';
+  btnCircleBig[1].style.visibility = 'hidden';
+  playerWinner.style.visibility = 'hidden';
+  computerWinner.style.visibility = 'hidden';
 }
 
 startGame();

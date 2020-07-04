@@ -25,17 +25,17 @@
   </div>
   <main>
     <div class="options">
-      <button class="btn-circle paper" value="paper" id="paper">
+      <button class="btn-circle paper" value="paper" id="paper" title="Paper">
         <span class="btn-wrapper">
           <img src="images/icon-paper.svg" alt="paper">
         </span>
       </button>
-      <button class="btn-circle scissors" value="scissors" id="scissors">
+      <button class="btn-circle scissors" value="scissors" title="Scissors" id="scissors">
         <span class="btn-wrapper">
           <img src="images/icon-scissors.svg" alt="scissors">
         </span>
       </button>
-      <button class="btn-circle rock" value="rock" id="rock">
+      <button class="btn-circle rock" title="Rock" value="rock" id="rock">
         <span class="btn-wrapper">
           <img src="images/icon-rock.svg" alt="rock">
         </span>
@@ -46,6 +46,7 @@
     <div class="player-pick">
       <h2>YOU PICKED</h2>
       <button class="btn-circle-big">
+        <div class="winner" id="player-winner"></div>
         <span class="btn-wrapper">
           <img src="images/icon-rock.svg" id="player-pick-img" alt="rock">
         </span>
@@ -60,6 +61,7 @@
     <div class="computer-pick">
       <h2>THE HOUSE PICKED</h2>
       <button class="btn-circle-big">
+        <div class="winner" id="computer-winner"></div>
         <span class="btn-wrapper">
           <img src="images/icon-scissors.svg" id="computer-pick-img" alt="scissors">
         </span>
@@ -73,7 +75,7 @@
       <div class="rules-header">
         <h2>RULES</h2>
         <span class="exit-rules">
-          <i class="fa fa-times" aria-hidden="true"></i>
+          <img src="images/icon-close.svg" alt="close">
         </span>
       </div>
       <div class="rules-img">
@@ -81,6 +83,7 @@
       </div>
     </div>
   </div>
+  <div class="pulse"></div>
   <!-- <div class="attribution">
     Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
     Coded by <a href="#">Your Name Here</a>.
