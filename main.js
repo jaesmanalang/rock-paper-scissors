@@ -1,85 +1,96 @@
+const optionsContainer = document.querySelector('.options');
+const optionButtons = document.querySelectorAll('.btn-circle');
 const pickContainer = document.querySelector('.pick');
-const weaponsContainer = document.querySelector('.weapons');
-const weaponButtons = document.querySelectorAll('.weapon-btn');
-const playerPickContainer = document.querySelector('.player-pick');
-const computerPickContainer = document.querySelector('.computer-pick');
-const playAgainBtn = document.querySelector('.play-again-btn');
-const result = document.querySelector('.result');
-const container = document.querySelector('.container');
+const playerPick = document.querySelector('.player-pick');
+const computerPick = document.querySelector('.computer-pick');
+const btnCircleBig = document.querySelectorAll('.btn-circle-big');
+const playerPickImg = document.getElementById('player-pick-img');
+const computerPickImg = document.getElementById('computer-pick-img');
+const playAgainBtn = document.getElementById('play-again');
+const declare = document.getElementById('declare');
+const score = document.getElementById('score');
 
 const options = ['rock', 'paper', 'scissors'];
-const random = Math.floor(Math.random() * options.length);
-let playerPick = '';
-let computerPick = '';
-let announce = '';
+let currentScore = 0;
+let playerChoice = '';
+let computerChoice = '';
 
 function startGame() {
-  playerPick = '';
-  computerPick = '';
-  // pickContainer.innerHTML = '';
-  // Reset
-  // container.removeChild('pick');
-  weaponsContainer.classList.remove('hide');
-  pickContainer.classList.add('hide');
+  reset();
   loadEventListeners();
 }
 
-function pick(e) {
-  playerPick = e.currentTarget.value;
-  computerPick = getComputerPick();
-  console.log(playerPick);
-  console.log(computerPick);
-  displayPick();
-  result.innerText = getResult(playerPick, computerPick);
-  console.log(getResult(playerPick, computerPick));
-}
-
-function displayPick() {
-  weaponsContainer.classList.add('hide');
-  pickContainer.classList.remove('hide');
-  // Create button and image elements
-  const playerBtn = document.createElement('button');
-  const playerImg = document.createElement('img');
-  const computerBtn = document.createElement('button');
-  const computerImg = document.createElement('img');
-
-  // Add classes and src attribute based on pick
-  playerBtn.classList.add('weapon-btn', playerPick);
-  playerImg.setAttribute('src', `images/icon-${playerPick}.svg`);
-  computerBtn.classList.add('weapon-btn', computerPick);
-  computerImg.setAttribute('src', `images/icon-${computerPick}.svg`);
-
-  playerBtn.appendChild(playerImg);
-  computerBtn.appendChild(computerImg);
-
-  playerPickContainer.appendChild(playerBtn);
-  computerPickContainer.appendChild(computerBtn);
-}
-
-function getComputerPick() {
-  return options[random];
-}
-
 function loadEventListeners() {
-  weaponButtons.forEach(btn => {
-    btn.addEventListener('click', pick);
+  optionButtons.forEach(btn => {
+    btn.addEventListener('click', getPlayerChoice);
   });
 
   playAgainBtn.addEventListener('click', startGame);
 }
 
-function getResult(player, computer) {
-  if (player === computer) {
-    return 'DRAW';
+/**
+ * Generate random value from options
+ */
+function getComputerChoice() {
+  return options[Math.floor(Math.random() * options.length)];
+}
+
+/**
+ * Stores player choice on selected button
+ * @param {event} e targets the event click
+ */
+function getPlayerChoice(e) {
+  playerChoice = e.currentTarget.value;
+  computerChoice = getComputerChoice();
+  displayPicks(playerChoice, computerChoice);
+  checkWinner(playerChoice, computerChoice);
+}
+
+/**
+ * Add class and replace icon based on picks
+ * @param {string} playerChoice get playerChoice value
+ * @param {string} computerChoice get computerChoice value
+ */
+function displayPicks(playerChoice, computerChoice) {
+  optionsContainer.style.display = 'none';
+  pickContainer.style.display = 'flex';
+  btnCircleBig[0].classList.add(`${playerChoice}`);
+  playerPickImg.src = `images/icon-${playerChoice}.svg`;
+  btnCircleBig[1].classList.add(`${computerChoice}`);
+  computerPickImg.src = `images/icon-${computerChoice}.svg`;
+}
+
+/**
+ * Check the winner and display the result
+ * @param {string} playerChoice check playerChoice value
+ * @param {string} computerChoice check computerChoice value
+ */
+function checkWinner(playerChoice, computerChoice) {
+  if (playerChoice === computerChoice) {
+    declare.innerText = 'DRAW';
   } else if (
-    (player === 'rock' && computer === 'scissors') ||
-    (player === 'paper' && computer === 'rock') ||
-    (player === 'scissors' && computer === 'paper')
+    (playerChoice === 'rock' && computerChoice === 'scissors') ||
+    (playerChoice === 'paper' && computerChoice === 'rock') ||
+    (playerChoice === 'scissors' && computerChoice === 'paper')
   ) {
-    return 'YOU WIN';
+    updateScore(1);
+    declare.innerText = 'YOU WIN';
   } else {
-    return 'YOU LOSE';
+    updateScore(-1);
+    declare.innerText = 'YOU LOSE';
   }
+  score.innerText = currentScore;
+}
+
+function updateScore(value) {
+  currentScore += value;
+}
+
+function reset() {
+  optionsContainer.style.display = 'flex';
+  pickContainer.style.display = 'none';
+  btnCircleBig[0].classList.remove('rock', 'paper', 'scissors');
+  btnCircleBig[1].classList.remove('rock', 'paper', 'scissors');
 }
 
 startGame();

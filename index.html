@@ -19,7 +19,7 @@
     </div>
     <div class="game-score">
       <span>SCORE</span>
-      <h1 class="score">12</h1>
+      <h1 class="score" id="score">0</h1>
     </div>
   </div>
   <main>
@@ -44,23 +44,23 @@
   <div class="pick">
     <div class="player-pick">
       <h2>YOU PICKED</h2>
-      <button class="btn-circle-big rock">
+      <button class="btn-circle-big">
         <span class="btn-wrapper">
-          <img src="images/icon-rock.svg" alt="rock">
+          <img src="images/icon-rock.svg" id="player-pick-img" alt="rock">
         </span>
       </button>
     </div>
     <div class="result">
-      <h1>YOU <span id="win">WIN</span></h1>
+      <h1><span id="declare">YOU WIN</span></h1>
       <button id="play-again">
         <h3>PLAY AGAIN</h3>
       </button>
     </div>
     <div class="computer-pick">
       <h2>THE HOUSE PICKED</h2>
-      <button class="btn-circle-big scissors">
+      <button class="btn-circle-big">
         <span class="btn-wrapper">
-          <img src="images/icon-scissors.svg" alt="scissors">
+          <img src="images/icon-scissors.svg" id="computer-pick-img" alt="scissors">
         </span>
       </button>
     </div>
