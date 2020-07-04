@@ -24,23 +24,47 @@
   </div>
   <main>
     <div class="options">
-      <button class="btn-circle paper">
+      <button class="btn-circle paper" value="paper" id="paper">
         <span class="btn-wrapper">
           <img src="images/icon-paper.svg" alt="paper">
         </span>
       </button>
-      <button class="btn-circle scissors">
+      <button class="btn-circle scissors" value="scissors" id="scissors">
         <span class="btn-wrapper">
           <img src="images/icon-scissors.svg" alt="scissors">
         </span>
       </button>
-      <button class="btn-circle rock">
+      <button class="btn-circle rock" value="rock" id="rock">
         <span class="btn-wrapper">
           <img src="images/icon-rock.svg" alt="rock">
         </span>
       </button>
     </div>
   </main>
+  <div class="pick">
+    <div class="player-pick">
+      <h2>YOU PICKED</h2>
+      <button class="btn-circle-big rock">
+        <span class="btn-wrapper">
+          <img src="images/icon-rock.svg" alt="rock">
+        </span>
+      </button>
+    </div>
+    <div class="result">
+      <h1>YOU <span id="win">WIN</span></h1>
+      <button id="play-again">
+        <h3>PLAY AGAIN</h3>
+      </button>
+    </div>
+    <div class="computer-pick">
+      <h2>THE HOUSE PICKED</h2>
+      <button class="btn-circle-big scissors">
+        <span class="btn-wrapper">
+          <img src="images/icon-scissors.svg" alt="scissors">
+        </span>
+      </button>
+    </div>
+  </div>
 
   <button class="rules-btn">RULES</button>
   <!-- <div class="attribution">
